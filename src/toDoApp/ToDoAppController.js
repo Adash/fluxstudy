@@ -8,15 +8,16 @@ import '../App.css';
 
 const TasksList = (props) => {
   const handleClick = (key) => { props.handleListClick(key) };
+  const { handleRemove }= props;
 
   const tasks = props.notes.map((note, index)=>{
     const completed = (note.completed ? "line-through" : "");
     return (
       <li key={ index } 
           className="list-group-item" 
-          onClick={ (key)=>handleClick(index)} 
           style={{ textDecoration: completed }}
           >
+          <span onClick={ ()=>handleClick(index)} >
             <span style={{ color: "darkgreen" }}> 
               { note.title } 
             </span> 
@@ -24,6 +25,9 @@ const TasksList = (props) => {
             <span style={{ color: "seagreen" }}>
               { note.text }
             </span>
+          </span>
+            <button className="btn btn-danger" onClick={ () => handleRemove(index)  } >
+            remove</button>
       </li>
     )
   });
@@ -44,12 +48,21 @@ class ToDoAppController extends Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleListClick = this.handleListClick.bind(this);
+    this.removeNote = this.removeNote.bind(this);
   }
 
   handleSubmit = (value) => {
     this.setState({
       notes: [...this.state.notes, value],
     });
+  }
+
+  removeNote = (indexToRemove) => {
+    const newNotes = this.state.notes.filter(
+      (value, index) => index !== indexToRemove
+    );
+    console.log(newNotes)
+    this.setState({ notes: newNotes });
   }
 
   handleListClick = (key)=> {
@@ -70,6 +83,7 @@ class ToDoAppController extends Component {
               <TasksList 
                 notes={ this.state.notes } 
                 handleListClick={ this.handleListClick } 
+                handleRemove={ this.removeNote }
               />
           </div>
           <div className="col-6">
