@@ -18,13 +18,14 @@ const TasksList = (props) => {
           style={{ textDecoration: completed }}
           onMouseOver={ ()=> props.mouseOver( index ) }
           onMouseOut={ ()=> props.mouseLeave( index )  }
+          onClick={ ()=>handleClick(index)}
           >
-          <span onClick={ ()=>handleClick(index)} >
+          <span  >
             <span style={{ color: "darkgreen" }}> 
               { note.title } 
             </span> 
               -- 
-            <span style={{ color: "seagreen" }}>
+            <span style={{ color: "darkgray" }}>
               { note.text }
             </span>
           </span>
