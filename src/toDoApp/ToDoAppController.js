@@ -14,7 +14,7 @@ const TasksList = (props) => {
     const active = (note.active ? "active" : "");
     return (
       <li key={ index } 
-          className={ "list-group-item " + " " +  active} 
+          className={ "list-group-item " +  active} 
           style={{ textDecoration: completed }}
           onMouseOver={ ()=> props.mouseOver( index ) }
           onMouseOut={ ()=> props.mouseLeave( index )  }
