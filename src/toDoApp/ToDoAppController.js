@@ -13,7 +13,8 @@ const TasksList = (props) => {
     const completed = (note.completed ? "line-through" : "");
     const active = (note.active ? "active" : "");
     return (
-      <li key={ index } 
+
+      <a key={ index } 
           className={ "list-group-item " +  active} 
           style={{ textDecoration: completed }}
           onMouseOver={ ()=> props.mouseOver( index ) }
@@ -29,13 +30,15 @@ const TasksList = (props) => {
               { note.text }
             </span>
           </span>
-            <button className="btn btn-danger" onClick={ () => props.handleRemove(index)  } >
-            remove</button>
-      </li>
+          <span className="btn btn-danger" onClick={ () => props.handleRemove(index)  } >
+        remove</span> 
+      </a>
+
+
     )
   });
   
-  return <ul className="list-group" >{ tasks }</ul>
+  return <div className="list-group" >{ tasks }</div>
 }
 
 class ToDoAppController extends Component {
