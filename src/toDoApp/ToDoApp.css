@@ -1,0 +1,35 @@
+.toDoAppContainer{
+  width: 100%;
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-column-gap: 10px;
+}
+
+.listContainer{
+  margin-top: 5px;
+  display: grid;
+  grid-row-gap: 4px;
+}
+
+.noteList{
+  grid-column-gap: 5px;
+}
+
+.noteForm{
+  background: lightgray;
+  padding: 5px;
+  height: 250px;
+}
+
+.formContainer{
+  display: grid;
+}
+
+.listElementContainer{
+  display: grid;
+  grid-template-columns: 5fr 1fr ;
+}
+
+.listElementButton{
+  height: 40px;
+}

@@ -1,0 +1,7 @@
+{"notes": [
+  {"title": "build a snowman", "text": "Don't use yellow snow", "completed": false, "active": false},
+  {"title": "Wake up", "text": "and pat the cat", "completed": true, "active": false},
+  {"title": "Read about Redux", "text": "implement the knowledge", "completed": false, "active": false},
+  {"title": "Count the trees", "text": "Don't miss the forest", "completed": false, "active": false},
+  {"title": "Look at the moon", "text": "Ignore the finger", "completed": false, "active": false}
+]}

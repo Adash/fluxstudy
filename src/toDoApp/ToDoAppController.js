@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
 import AddTaskForm from './AddTaskForm';
-import '../App.css';
-// switch from CDC to local bootstrap file (like below) later
-//import 'bootstrap/dist/css/bootstrap.css';
+import inData from './notes.json';
 
+import './ToDoApp.css';
 
 const TasksList = (props) => {
   const handleClick = (key) => { props.handleListClick(key) };
@@ -13,8 +12,8 @@ const TasksList = (props) => {
     const completed = (note.completed ? "line-through" : "");
     const active = (note.active ? "active" : "");
     return (
-
-      <div key={ index } 
+    <div key={ index } className="listElementContainer">
+      <div 
           className={ "list-group-item " +  active} 
           style={{ textDecoration: completed }}
           onMouseOver={ ()=> props.mouseOver( index ) }
@@ -25,20 +24,22 @@ const TasksList = (props) => {
             <span style={{ color: "darkgreen" }}> 
               { note.title } 
             </span> 
-              -- 
+            <span> -- </span>
             <span style={{ color: "darkgray" }}>
               { note.text }
             </span>
-          </span>
-          <span className="btn btn-danger" onClick={ () => props.handleRemove(index)  } >
-        remove</span> 
+          </span>    
       </div>
-
+      <span 
+        className="btn btn-danger listElementButton" 
+        onClick={ () => props.handleRemove(index)} 
+      >remove</span> 
+    </div>
 
     )
   });
   
-  return <div className="list-group" >{ tasks }</div>
+  return <div className='listContainer'>{ tasks }</div>
 }
 
 class ToDoAppController extends Component {
@@ -46,10 +47,7 @@ class ToDoAppController extends Component {
     super(props);
 
     this.state = {
-      notes: [
-        {title: 'first task', text: 'text of the first todo', completed: false, active: false,},
-        {title: 'second task', text: 'text of the second todo', completed: true, active: false,}
-      ],
+      notes: inData.notes,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -103,20 +101,18 @@ class ToDoAppController extends Component {
 
   render() {
     return (
-      <div className="container">
-        <div className="row">
-          <div className="col-6">
-              <TasksList 
-                notes={ this.state.notes } 
-                handleListClick={ this.handleListClick } 
-                handleRemove={ this.removeNote }
-                mouseOver={ this.makeActive }
-                mouseLeave={ this.removeActive }
-              />
+      <div className="toDoAppContainer">
+          <div className="noteList">
+            <TasksList 
+              notes={ this.state.notes } 
+              handleListClick={ this.handleListClick } 
+              handleRemove={ this.removeNote }
+              mouseOver={ this.makeActive }
+              mouseLeave={ this.removeActive }
+            />
           </div>
-          <div className="col-6">
+          <div className="noteForm formContainer">
             <AddTaskForm handleSubmit={ this.handleSubmit } />
-          </div>
         </div>
       </div>
     );

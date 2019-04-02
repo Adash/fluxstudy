@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import ToDoAppController from './toDoApp/ToDoAppController';
 import RenderPropsController from './renderProps/RenderPropsController';
 
+import './bootstrap.min.css';
 import './App.css';
 
 const Index = ()=> (
