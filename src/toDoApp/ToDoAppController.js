@@ -14,7 +14,7 @@ const TasksList = (props) => {
     const active = (note.active ? "active" : "");
     return (
 
-      <a key={ index } 
+      <div key={ index } 
           className={ "list-group-item " +  active} 
           style={{ textDecoration: completed }}
           onMouseOver={ ()=> props.mouseOver( index ) }
@@ -32,7 +32,7 @@ const TasksList = (props) => {
           </span>
           <span className="btn btn-danger" onClick={ () => props.handleRemove(index)  } >
         remove</span> 
-      </a>
+      </div>
 
 
     )
